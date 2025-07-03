@@ -38,7 +38,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         from: "thiago.cunha@mipconstrutora.com.br",
-        to: "gustavo.rodrigues@mipconstrutora.com.br",
+        to: "tcunha2004@gmail.com",
         subject: "Novo Lead do Site",
         html: `
           <b>Novo lead recebido:</b><br>
