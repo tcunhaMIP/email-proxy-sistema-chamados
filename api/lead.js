@@ -26,6 +26,16 @@ export default async function handler(req, res) {
 
   let data = req.body;
 
+  if (typeof data === "string") {
+    try {
+      data = JSON.parse(data);
+    } catch (e) {
+      return res.status(400).json({ error: "Body inválido, não é JSON" });
+    }
+  }
+
+  console.log("Body recebido:", data); // Veja nos logs se aparece o JSON certo
+
   try {
     // ENVIA E-MAIL USANDO RESEND
     const response = await fetch("https://api.resend.com/emails", {
