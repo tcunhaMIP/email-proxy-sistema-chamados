@@ -25,8 +25,6 @@ export default async function handler(req, res) {
   }
 
   let data = req.body;
-  // Se não vier como objeto, pode descomentar a linha abaixo:
-  // data = typeof data === 'string' ? JSON.parse(data) : data;
 
   try {
     // ENVIA E-MAIL USANDO RESEND
@@ -37,8 +35,8 @@ export default async function handler(req, res) {
         Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: "thiago.cunha@mipconstrutora.com.br",
-        to: "tcunha2004@gmail.com",
+        from: "Thiago Cunha <thiago.cunha@mipconstrutora.com.br>",
+        to: ["tcunha2004@gmail.com"],
         subject: "Novo Lead do Site",
         html: `
           <b>Novo lead recebido:</b><br>
