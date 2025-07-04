@@ -38,7 +38,7 @@ export default async function handler(req, res) {
         from: "Thiago Cunha <thiago.cunha@mipconstrutora.com.br>",
         to: ["tcunha2004@gmail.com"],
         subject: "Novo Lead do Site",
-        html: "<p>Novo lead recebido:<br>Nome: ${data.nome}<br>Email: ${data.email}<br>Telefone: ${data.telefone}<br></p>",
+        html: `<p>Novo lead recebido:<br>Nome: ${data.nome}<br>Email: ${data.email}<br>Telefone: ${data.telefone}<br></p>`,
       }),
     });
 
