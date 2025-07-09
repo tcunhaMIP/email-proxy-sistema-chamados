@@ -1,4 +1,5 @@
 export default async function handler(req, res) {
+  // Origens permitidas para recebimento de chamadas API
   const allowedOrigins = [
     "https://jardins156.com.br",
     "https://www.jardins156.com.br",
@@ -8,6 +9,7 @@ export default async function handler(req, res) {
     "http://localhost:5500",
   ];
 
+  // processos de verificacao
   const origin = req.headers.origin;
 
   if (allowedOrigins.includes(origin)) {
@@ -34,10 +36,8 @@ export default async function handler(req, res) {
     }
   }
 
-  console.log("Body recebido:", data); // Veja nos logs se aparece o JSON certo
-
   try {
-    // ENVIA E-MAIL USANDO RESEND
+    // chama a API do Resend
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
@@ -52,6 +52,7 @@ export default async function handler(req, res) {
       }),
     });
 
+    // checa resposta
     const respData = await response.json();
     if (!response.ok) {
       return res
