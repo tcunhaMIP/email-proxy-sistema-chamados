@@ -42,8 +42,9 @@ export default async function handler(req, res) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`, // variavel ambiente na Vercel
       },
+      // dados
       body: JSON.stringify({
         from: "Thiago Cunha <thiago.cunha@mipconstrutora.com.br>",
         to: ["gustavo.rodrigues@mipconstrutora.com.br"],
