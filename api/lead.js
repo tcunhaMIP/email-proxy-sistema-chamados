@@ -1,23 +1,24 @@
 export default async function handler(req, res) {
   // Origens permitidas para recebimento de chamadas API
-  const allowedOrigins = new Set([
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-  ]);
+  // const allowedOrigins = new Set([
+  //   "https://localhost:5173",
+  //   "https://127.0.0.1:5173",
+  //   "http://localhost:5173",
+  //   "http://127.0.0.1:5173",
+  // ]);
 
-  // processos de verificacao
-  const origin = req.headers.origin;
+  // // processos de verificacao
+  // const origin = req.headers.origin;
 
   // Sempre que a origin for permitida, já anexe os headers CORS
-  if (allowedOrigins.has(origin)) {
-    res.setHeader("Access-Control-Allow-Origin", origin);
-    res.setHeader("Vary", "Origin"); // evita cache errado
-    res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
-    res.setHeader(
-      "Access-Control-Allow-Headers",
-      "Content-Type, Authorization, X-Requested-With, token"
-    );
-  }
+  // if (allowedOrigins.has(origin)) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Authorization, X-Requested-With, token"
+  );
+  // }
 
   if (req.method === "OPTIONS") {
     return res.status(204).end();
