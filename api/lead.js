@@ -41,7 +41,7 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         from: "Sistema de Chamados <thiago.cunha@mipconstrutora.com.br>",
         to: ["ti@mipconstrutora.com.br"],
-        subject: `Novo Chamado de ${data.nomeFunc}`,
+        subject: `${data.title} de ${data.nomeFunc}`,
         html: `<p>Novo Chamado recebido:<br><br>Nome do Funcionário: ${data.nomeFunc}<br>Departamento: ${data.depFunc}<br>Problema: ${data.problemaFunc}<br>Descrição: ${data.desc}<br></p>`,
       }),
     });
