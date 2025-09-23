@@ -1,13 +1,6 @@
 export default async function handler(req, res) {
   // Origens permitidas para recebimento de chamadas API
-  const allowedOrigins = [
-    "https://jardins156.com.br",
-    "https://www.jardins156.com.br",
-    "https://mipconstrutora.com.br",
-    "https://www.mipconstrutora.com.br",
-    "http://127.0.0.1:5500",
-    "http://localhost:5500",
-  ];
+  const allowedOrigins = ["http://localhost:5173"];
 
   // processos de verificacao
   const origin = req.headers.origin;
@@ -36,6 +29,8 @@ export default async function handler(req, res) {
     }
   }
 
+  // -----------------------------------------------------------------------------------------------------------
+
   try {
     // chama a API do Resend
     const response = await fetch("https://api.resend.com/emails", {
@@ -47,9 +42,9 @@ export default async function handler(req, res) {
       // dados
       body: JSON.stringify({
         from: "Thiago Cunha <thiago.cunha@mipconstrutora.com.br>",
-        to: ["gustavo.rodrigues@mipconstrutora.com.br"],
-        subject: "Novo Lead do Site",
-        html: `<p>Novo lead recebido:<br>Nome: ${data.nome}<br>Email: ${data.email}<br>Telefone: ${data.telefone}<br></p>`,
+        to: ["ti@mipconstrutora.com.br"],
+        subject: "Novo Chamado",
+        html: `<p>Novo Chamado recebido:<br><br>Nome do Funcionário: ${data.nomeFunc}<br>Departamento: ${data.depFunc}<br>Problema: ${data.problemaFunc}<br>Descrição: ${data.desc}<br></p>`,
       }),
     });
 
