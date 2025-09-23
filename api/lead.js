@@ -1,6 +1,6 @@
 export default async function handler(req, res) {
   // Origens permitidas para recebimento de chamadas API
-  const allowedOrigins = ["http://localhost:5173"];
+  const allowedOrigins = ["http://127.0.0.1:5173", "http://localhost:5173"];
 
   // processos de verificacao
   const origin = req.headers.origin;
