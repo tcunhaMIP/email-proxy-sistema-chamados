@@ -39,7 +39,7 @@ export default async function handler(req, res) {
       },
       // dados
       body: JSON.stringify({
-        from: "Thiago Cunha <thiago.cunha@mipconstrutora.com.br>",
+        from: "Sistema de Chamados <thiago.cunha@mipconstrutora.com.br>",
         to: ["ti@mipconstrutora.com.br"],
         subject: `Novo Chamado de ${data.nomeFunc}`,
         html: `<p>Novo Chamado recebido:<br><br>Nome do Funcionário: ${data.nomeFunc}<br>Departamento: ${data.depFunc}<br>Problema: ${data.problemaFunc}<br>Descrição: ${data.desc}<br></p>`,
