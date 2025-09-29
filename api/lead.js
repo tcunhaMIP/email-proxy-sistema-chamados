@@ -43,9 +43,12 @@ export default async function handler(req, res) {
         from: "Sistema de Chamados <thiago.cunha@mipconstrutora.com.br>",
         to: [data.emailFunc],
         subject: "Seu chamado foi concluído!",
-        html: `<p>Avalie ${data.nomeMembroTI} por seu atendimento:<br>
-                https://mipconstrutora.com.br/ti/sistema-chamados/#/avaliar-membro?idMembro=${data.idMembro}&idChamado=${data.idChamado}
-               </p>`,
+        html: `<p>
+                  Resolução do chamado: "${data.resolucao}"<br><br>
+              </p>
+              <p>Avalie ${data.nomeMembroTI} por seu atendimento:<br>
+                  https://mipconstrutora.com.br/ti/sistema-chamados/#/avaliar-membro?idMembro=${data.idMembro}&idChamado=${data.idChamado}
+              </p>`,
       });
     } else {
       return res
