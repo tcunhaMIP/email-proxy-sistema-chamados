@@ -30,22 +30,36 @@ export default async function handler(req, res) {
   // -----------------------------------------------------------------------------------------------------------
 
   try {
-    // chama a API do Resend
+    let body;
+    if (data.title != null) {
+      body = JSON.stringify({
+        from: "Sistema de Chamados <thiago.cunha@mipconstrutora.com.br>",
+        to: ["ti@mipconstrutora.com.br"],
+        subject: `${data.title} de ${data.nomeFunc}`,
+        html: `<p>Novo Chamado recebido:<br><br>Nome do Funcionário: ${data.nomeFunc}<br>Departamento: ${data.depFunc}<br>Problema: ${data.problemaFunc}<br>Descrição: ${data.desc}<br><br>Preferência de contato: ${data.contato}<br></p>`,
+      });
+    } else if (data.emailFunc != null) {
+      body = JSON.stringify({
+        from: "Sistema de Chamados <thiago.cunha@mipconstrutora.com.br>",
+        to: [data.emailFunc],
+        subject: "Seu chamado foi concluído!",
+        html: `<p>Avalie ${data.nomeMembroTI} por seu atendimento:<br>
+                https://mipconstrutora.com.br/ti/sistema-chamados/#/avaliar-membro?idMembro=${data.idMembro}&idChamado=${data.idChamado}
+               </p>`,
+      });
+    } else {
+      return res
+        .status(400)
+        .json({ error: "Body deve conter 'title' ou 'email_funcionario'" });
+    }
+
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.RESEND_API_KEY}`, // variavel ambiente na Vercel
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
       },
-      // dados
-      body: JSON.stringify({
-        from: "Sistema de Chamados <thiago.cunha@mipconstrutora.com.br>",
-        to: ["ti@mipconstrutora.com.br"],
-        subject: `${data.title} de ${data.nomeFunc}`,
-        html: `<p>Novo Chamado recebido:<br><br>Nome do Funcionário: ${data.nomeFunc}
-        <br>Departamento: ${data.depFunc}<br>Problema: ${data.problemaFunc}<br>Descrição: ${data.desc}<br><br>
-        Preferência de contato: ${data.contato}<br></p>`,
-      }),
+      body,
     });
 
     // checa resposta
