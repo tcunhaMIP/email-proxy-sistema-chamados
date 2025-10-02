@@ -47,7 +47,7 @@ export default async function handler(req, res) {
                   Resolução do chamado: "${data.resolucao}"<br><br>
               </p>
               <p>Avalie ${data.nomeMembroTI} por seu atendimento:<br>
-                  https://mipconstrutora.com.br/ti/sistema-chamados/#/avaliar-membro?idMembro=${data.idMembro}&idChamado=${data.idChamado}
+                  <a href="https://mipconstrutora.com.br/ti/sistema-chamados/#/avaliar-membro?idMembro=${data.idMembro}&idChamado=${data.idChamado}">Clique aqui para avaliar</a>
               </p>`,
       });
     } else {
