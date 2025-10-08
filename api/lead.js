@@ -45,7 +45,7 @@ export default async function handler(req, res) {
         }<br>Grau de Criticidade: ${data.criticidade}<br>${
           data.dataIncidente
             ? `Data do Incidente: ${data.dataIncidente} <br>`
-            : null
+            : ""
         }</p>`,
       });
     } else if (data.emailFunc != null) {
