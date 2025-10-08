@@ -36,7 +36,17 @@ export default async function handler(req, res) {
         from: "Sistema de Chamados <thiago.cunha@mipconstrutora.com.br>",
         to: ["ti@mipconstrutora.com.br"],
         subject: `${data.title} de ${data.nomeFunc}`,
-        html: `<p>Novo Chamado recebido:<br><br>Nome do Funcionário: ${data.nomeFunc}<br>Departamento: ${data.depFunc}<br>Problema: ${data.problemaFunc}<br>Descrição: ${data.desc}<br><br>Preferência de contato: ${data.contato}<br>Grau de Criticidade: ${data.criticidade}<br></p>`,
+        html: `<p>Novo Chamado recebido:<br><br>Nome do Funcionário: ${
+          data.nomeFunc
+        }<br>Departamento: ${data.depFunc}<br>Problema: ${
+          data.problemaFunc
+        }<br>Descrição: ${data.desc}<br><br>Preferência de contato: ${
+          data.contato
+        }<br>Grau de Criticidade: ${data.criticidade}<br>${
+          data.dataIncidente
+            ? `Data do Incidente: ${data.dataIncidente} <br>`
+            : null
+        }</p>`,
       });
     } else if (data.emailFunc != null) {
       body = JSON.stringify({
