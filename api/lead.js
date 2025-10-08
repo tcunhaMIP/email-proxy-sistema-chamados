@@ -40,11 +40,13 @@ export default async function handler(req, res) {
           data.nomeFunc
         }<br>Departamento: ${data.depFunc}<br>Problema: ${
           data.problemaFunc
-        }<br>Descrição: ${data.desc}<br><br>Preferência de contato: ${
-          data.contato
+        }<br>Descrição: ${data.desc}<br>${
+          data.contato && String(data.contato).trim().length > 0
+            ? `<br>Preferência de contato: ${data.contato}`
+            : ""
         }<br>Grau de Criticidade: ${data.criticidade}<br>${
           data.dataIncidente
-            ? `Data do Incidente: ${data.dataIncidente} <br>`
+            ? `<br>Data do Incidente: ${data.dataIncidente} <br>`
             : ""
         }</p>`,
       });
