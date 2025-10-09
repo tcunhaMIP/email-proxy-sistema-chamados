@@ -36,11 +36,11 @@ export default async function handler(req, res) {
         from: "Sistema de Chamados <thiago.cunha@mipconstrutora.com.br>",
         to: ["ti@mipconstrutora.com.br"],
         subject: `${data.title} de ${data.nomeFunc}`,
-        html: `<p>Novo Chamado recebido:<br><br>Nome do Funcionário: ${
-          data.nomeFunc
-        }<br>Departamento: ${data.depFunc}<br>Problema: ${
-          data.problemaFunc
-        }<br>Descrição: ${data.desc}<br>${
+        html: `<p>Novo Chamado recebido${
+          data.dataIncidente ? ` - Incidente de Segurança` : ``
+        }:<br><br>Nome do Funcionário: ${data.nomeFunc}<br>Departamento: ${
+          data.depFunc
+        }<br>Problema: ${data.problemaFunc}<br>Descrição: ${data.desc}<br>${
           data.contato && String(data.contato).trim().length > 0
             ? `<br>Preferência de contato: ${data.contato}`
             : ""
