@@ -62,6 +62,32 @@ export default async function handler(req, res) {
                   <a href="https://mipconstrutora.com.br/ti/sistema-chamados/#/avaliar-membro?idMembro=${data.idMembro}&idChamado=${data.idChamado}">Clique aqui para avaliar</a>
               </p>`,
       });
+    } else if (data.motivo_solicitacao != null) {
+      body = JSON.stringify({
+        from: "Sistema de Chamados <thiago.cunha@mipconstrutora.com.br>",
+        to: ["ti@mipconstrutora.com.br"],
+        subject: "Chamado de Solicitação de Recursos",
+        html: `
+            <p>
+              Novo Chamado de Solicitação de Recursos recebido de ${data.solicitante}
+            </p>
+            <br>
+            <p>
+              Categoria: ${data.categoria}<br>
+              Motivo da Solicitação: ${data.motivo_solicitacao}<br>
+              Nome do Colaborador: ${data.nome_colaborador}<br>
+              Cargo do Colaborador: ${data.cargo_colaborador}<br>
+              Setor do Colaborador: ${data.setor_colaborador}<br>
+              Local de Trabalho: ${data.local_trabalho_colaborador}<br>
+              Data de Início: ${data.data_inicio}<br>
+              Mesmas Permissões de Outro Colaborador: ${data.mesmas_permissoes}<br>
+              Pastas Restritas: ${data.pastas_restritas}<br>
+              Programas Necessários: ${data.programas_necessarios}<br>
+              Recursos Necessários: ${data.recursos_necessarios}<br>
+              Acessórios Necessários: ${data.acessorios_necessarios}<br>
+            </p>
+        `,
+      });
     } else {
       return res
         .status(400)
