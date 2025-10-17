@@ -48,7 +48,10 @@ export default async function handler(req, res) {
           data.dataIncidente
             ? `<br>Data do Incidente: ${data.dataIncidente} <br>`
             : ""
-        }</p>`,
+        }
+        <br>
+        Clique <a href="https://mipconstrutora.com.br/ti/sistema-chamados/#/ti/todos-chamados">aqui</a> para visualizar!
+        </p>`,
       });
     } else if (data.emailFunc != null) {
       body = JSON.stringify({
@@ -73,7 +76,7 @@ export default async function handler(req, res) {
             </p>
             <br>
             <p>
-              Clique <a href="http://localhost:5173/ti/sistema-chamados/#/ti-login">aqui</a> para verificar o chamado!
+              Clique <a href="https://mipconstrutora.com.br/ti/sistema-chamados/#/ti/solicitacao-recursos">aqui</a> para verificar o chamado!
             </p>
         `,
       });
